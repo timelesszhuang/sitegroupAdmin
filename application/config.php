@@ -60,9 +60,9 @@ return [
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
-    'default_controller'     => 'Index',
+    'default_controller'     => 'admin',
     // 默认操作名
-    'default_action'         => 'index',
+    'default_action'         => 'login',
     // 默认验证器
     'default_validate'       => '',
     // 默认的空控制器名
@@ -227,5 +227,21 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
+    ],
+    'captcha'  => [
+        // 验证码字符集合
+        'codeSet'  => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY',
+        // 验证码字体大小(px)
+        'fontSize' => 14,
+        // 是否画混淆曲线
+        'useCurve' => true,
+        // 验证码图片高度
+        'imageH'   => 30,
+        // 验证码图片宽度
+        'imageW'   => 110,
+        // 验证码位数
+        'length'   =>4,
+        // 验证成功后是否重置
+        'reset'    => true
     ],
 ];
