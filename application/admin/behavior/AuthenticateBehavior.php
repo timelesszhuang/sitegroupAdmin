@@ -8,8 +8,9 @@
 namespace app\admin\behavior;
 
 use think\Controller;
+use think\Session;
 
-class AuthenticateBehavior
+class AuthenticateBehavior extends Controller
 {
     /**
      * 统一命令执行入口  里面调用其他方法
@@ -20,9 +21,14 @@ class AuthenticateBehavior
         $this->$params();
     }
 
+    /**
+     * 检查是否登陆
+     */
     public function check_auth()
     {
-         
+         if(empty(Session::has("admin_user"))){
+             $this->redirect("admin/login/login");
+         }
     }
 
 

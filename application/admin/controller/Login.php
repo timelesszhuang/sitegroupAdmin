@@ -11,7 +11,8 @@ use think\Controller;
 use app\common\model\CheckLogin;
 use think\Hook;
 use think\Request;
-
+use think\Session;
+use think\Url;
 class Login extends Controller
 {
     public function _initialize()
@@ -39,6 +40,15 @@ class Login extends Controller
 //            //验证失败
 //            return ["msg"=>"验证码错误","status"=>"error"];
 //        };
+    }
+
+    /**
+     * 退出登陆
+     */
+    public function loginout()
+    {
+        Session::clear();
+        return ["url"=>Url::build("admin/login/login")];
     }
 }
 

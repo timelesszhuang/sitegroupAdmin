@@ -122,11 +122,24 @@ class Node extends AdminBase
      */
     public function del()
     {
-        $id=$this->Rinstance->post("id");
-        $node=\app\admin\model\Node::get($id);
-        if(!$node->delete()){
+        $id = $this->Rinstance->post("id");
+        $node = \app\admin\model\Node::get($id);
+        if (!$node->delete()) {
             return ["status" => "error", "title" => "编辑节点", "msg" => "编辑失败"];
         }
         return ["status" => "success", "title" => "编辑节点", "msg" => "编辑成功"];
+    }
+
+    /**
+     * 跳转到其他节点后台
+     * @return string
+     */
+    public function jump()
+    {
+        $id = $this->Rinstance->post("id");
+        $node_instance = \app\admin\model\Node::get($id);
+        $user_id=$node_instance->toArray()["user_id"];
+        $user_instance = \app\common\model\User::get($user_id);
+        return (new \app\common\model\CheckLogin())->checktype($user_instance->toArray());
     }
 }
