@@ -9,7 +9,9 @@
 namespace app\admin\controller;
 use app\common\model\User;
 use think\Validate;
-
+use think\Session;
+use think\Url;
+use think\Cookie;
 class Index extends AdminBase
 {
     /**
@@ -47,6 +49,16 @@ class Index extends AdminBase
                 return ["status"=>"error","title"=>"验证错误","msg"=>$validate->getError()];
         }
         return (new User())->chpwd($pwd_arr["oldpwd"],$pwd_arr["newpwd"],$pwd_arr["newpwd2"]);
+    }
+    /**
+     * 退出登陆
+     */
+    public function loginout()
+    {
+        cookie::delete('rebUserId');
+        cookie::delete('rebSalt');
+        Session::clear();
+        return ["url"=>Url::build("admin/login/login")];
     }
 
 }

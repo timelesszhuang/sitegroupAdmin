@@ -140,6 +140,6 @@ class Node extends AdminBase
         $node_instance = \app\admin\model\Node::get($id);
         $user_id=$node_instance->toArray()["user_id"];
         $user_instance = \app\common\model\User::get($user_id);
-        return (new \app\common\model\CheckLogin())->checktype($user_instance->toArray());
+        return (new \app\common\model\CheckLogin())->checktype($user_instance->toArray(),0);
     }
 }

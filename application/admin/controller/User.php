@@ -150,6 +150,7 @@ class User extends AdminBase
         }
         $user = \app\common\model\User::get($getData["id"]);
         $user->pwd = md5($getData["pwd"] . $user["user_name"]);
+        $user->salt = chr(rand(97, 122)) . chr(rand(65, 90)) . chr(rand(97, 122)) . chr(rand(65, 90));
         if (!$user->save()) {
             return ["status" => "error", "title" => "重置密码信息", "msg" => "重置失败"];
         }

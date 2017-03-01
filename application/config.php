@@ -244,4 +244,7 @@ return [
         // 验证成功后是否重置
         'reset'    => true
     ],
+    'crypt'=>[
+        'cookiePrivate'=>'qiangbi123$%^'
+    ]
 ];

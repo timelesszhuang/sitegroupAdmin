@@ -38,6 +38,7 @@ class User extends Model
             return ["status" => "error", "msg" => "原密码错误", "title" => "修改密码信息"];
         }
         $user->pwd = md5($newpwd .$admin_user);
+        $user->salt = chr(rand(97, 122)) . chr(rand(65, 90)) . chr(rand(97, 122)) . chr(rand(65, 90));
         if (!$user->save()) {
             return ["status" => "error", "msg" => "密码错误失败", "title" => "修改密码信息"];
         }
