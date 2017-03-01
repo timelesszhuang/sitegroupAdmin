@@ -91,20 +91,21 @@ class CheckLogin extends Model
             case 1:
                 Session::set("admin_user",$userinfo["user_name"]);
                 Session::set("admin_id",$userinfo["id"]);
-                Session::set("type",$userinfo["type"]);
                 Session::set("admin_name",$userinfo["name"]);
                 break;
             //节点后台
             case 2:
                 Session::set("index_user",$userinfo["user_name"]);
                 Session::set("index_id",$userinfo["id"]);
-                Session::set("type",$userinfo["type"]);
                 Session::set("index_name",$userinfo["name"]);
 
                 //这里还需要获取用户的公司信息等等
                 $jump_url=Url::build("index/index/index");
                 break;
         }
+        Session::set("type",$userinfo["type"]);
+        Session::set("type",$userinfo["type"]);
+
         return ["status"=>"success","msg"=>"登陆成功,即将进行跳转...","url"=>$jump_url];
     }
 
