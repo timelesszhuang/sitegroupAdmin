@@ -1,3 +1,4 @@
+<script src="/static/js/jquery-2.1.1.js"></script>
 <aside class="main-sidebar">
     <section class="sidebar">
         <div class="user-panel">
@@ -11,11 +12,11 @@
         </div>
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
+                <!--<input type="text" name="q" class="form-control" placeholder="Search...">-->
+              <!--<span class="input-group-btn">-->
+                <!--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>-->
+                <!--</button>-->
+              <!--</span>-->
             </div>
         </form>
         <ul class="sidebar-menu">
@@ -28,20 +29,20 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{:URL('admin/Industry/index')}"><i class="fa fa-circle-o"></i> 分类 </a></li>
-                    <li><a href="{:URL('admin/Company/index')}"><i class="fa fa-circle-o"></i> 公司信息 </a></li>
+                    <li flag="Industry" parent="2"><a href="{:URL('admin/Industry/index','flag=Industry')}"><i class="fa fa-circle-o"></i> 分类 </a></li>
+                    <li flag="Company" parent="2"><a href="{:URL('admin/Company/index','flag=Company')}"><i class="fa fa-circle-o"></i> 公司信息 </a></li>
                 </ul>
             </li>
-            <li>
-                <a href="{:URL('admin/User/index')}">
+            <li flag="User">
+                <a href="{:URL('admin/User/index','flag=User')}">
                     <i class="fa fa-user"></i> <span>用户</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
             </span>
                 </a>
             </li>
-            <li>
-                <a href="{:URL('admin/Node/index')}">
+            <li flag="Node">
+                <a href="{:URL('admin/Node/index','flag=Node')}">
                     <i class="fa fa-th"></i> <span>节点</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
@@ -66,3 +67,11 @@
         </ul>
     </section>
 </aside>
+<script>
+    var flag="{$flag}";
+    var flagEle=$("li[flag='"+flag+"']");
+    flagEle.removeClass().addClass("treeview active");
+    if(flagEle.attr("parent")){
+        flagEle.parent().parent().removeClass().addClass("treeview active");
+    }
+</script>

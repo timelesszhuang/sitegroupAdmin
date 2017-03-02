@@ -18,6 +18,7 @@ class User extends AdminBase
      */
     public function index()
     {
+        $this->assignFlag();
         return $this->fetch();
     }
 

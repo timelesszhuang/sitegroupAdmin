@@ -8,7 +8,7 @@
  */
 namespace app\admin\controller;
 use think\Validate;
-
+use think\Request;
 class Industry extends AdminBase
 {
     /**
@@ -17,6 +17,7 @@ class Industry extends AdminBase
      */
     public function index()
     {
+        $this->assignFlag();
         return $this->fetch();
     }
 

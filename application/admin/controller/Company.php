@@ -18,6 +18,7 @@ class Company extends AdminBase
      */
     public function index()
     {
+        $this->assignFlag();
         return $this->fetch();
     }
 

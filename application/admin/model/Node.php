@@ -11,6 +11,7 @@ use think\Request;
 
 class Node extends Model
 {
+
     /**
      * 获取所有数据
      * @param $draw

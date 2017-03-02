@@ -107,6 +107,7 @@ class CheckLogin extends Model
                 Session::set("index_id", $userinfo["id"]);
                 Session::set("index_name", $userinfo["name"]);
                 Session::set("index_type", $userinfo["type"]);
+                Session::set("index_node_id",$userinfo["node_id"]);
                 //这里还需要获取用户的公司信息等等
                 $jump_url = Url::build("index/index/index");
                 break;

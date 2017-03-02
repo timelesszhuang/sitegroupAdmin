@@ -20,6 +20,9 @@ class Index extends AdminBase
      */
     public function index()
     {
+        $this->assign([
+            "flag"=>"index"
+        ]);
         return $this->fetch();
     }
 

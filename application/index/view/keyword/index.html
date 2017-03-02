@@ -5,11 +5,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                公司信息
+                关键词信息
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">公司信息</li>
+                <li class="active">关键词信息</li>
             </ol>
         </section>
         {include file="public/navbar" /}
@@ -30,12 +30,8 @@
                 <thead>
                 <tr>
                     <th>id</th>
-                    <th>名称</th>
-                    <th>公司简称</th>
-                    <th>法人</th>
-                    <th>网址</th>
-                    <th>主营业务</th>
-                    <th>行业名称</th>
+                    <th>关键词</th>
+                    <th>类型</th>
                     <th>创建时间</th>
                     <th>编辑</th>
                 </tr>
@@ -47,7 +43,7 @@
         <div class="pull-right hidden-xs">
             <b>Sitegroup</b> 2.3.8
         </div>
-        <strong>Copyright &copy; 2014-2016 <a href="javascript:void(0);">Almsaeed Studio</a>.</strong> All rights
+        <strong>Copyright &copy; 2014-2016 <a href="javascript:void(0);">Sitegroup</a>.</strong> All rights
         reserved.
     </footer>
 </div>
@@ -56,12 +52,12 @@
         var chpwdUrl="{:URL('admin/index/chpwdHtml')}";
         var chpwdsubmit="{:URL('admin/index/chpwd')}";
 
-        var datatable_url="{:URL('admin/Company/getAll')}"
-        var addhtml="{:URL('admin/Company/addHtml')}";
-        var addurl="{:URL('admin/Company/add')}";
-        var edithtml="{:URL('admin/Company/editHtml')}";
-        var editurl="{:URL('admin/Company/edit')}";
-        var delurl="{:URL('admin/Company/del')}";
+        var datatable_url="{:URL('index/Keyword/getAll')}";
+        var addhtml="{:URL('index/Keyword/addHtml')}";
+        var addurl="{:URL('index/Keyword/add')}";
+        var edithtml="{:URL('index/Keyword/editHtml')}";
+        var editurl="{:URL('index/Keyword/edit')}";
+        var delurl="{:URL('index/Keyword/del')}";
 
         return {
             chpwdUrl:chpwdUrl,
@@ -71,11 +67,12 @@
             addurl:addurl,
             edithtml:edithtml,
             editurl:editurl,
-            delurl:delurl
+            delurl:delurl,
+
         };
     })();
 </script>
 {include file="public/bottom" /}
-<script src="/static/js/adminlogic/company.js"></script>
+<script src="/static/js/indexlogic/keyword.js"></script>
 </body>
 </html>

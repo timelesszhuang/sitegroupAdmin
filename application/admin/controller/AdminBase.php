@@ -26,4 +26,13 @@ class AdminBase extends Controller
         Hook::listen('checkauth', $action);
     }
 
+    /**
+     * 接收并assign到页面flag
+     */
+    public function assignFlag()
+    {
+        $this->assign([
+            "flag"=>$this->Rinstance->param('flag')
+        ]);
+    }
 }

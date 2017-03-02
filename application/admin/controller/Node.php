@@ -20,6 +20,7 @@ class Node extends AdminBase
      */
     public function index()
     {
+        $this->assignFlag();
         return $this->fetch();
     }
 
@@ -63,8 +64,14 @@ class Node extends AdminBase
                 "msg" => $validate->getError()
             ];
         }
-        $node = (new \app\admin\model\Node($_POST));
-        if (!$node->allowField(true)->save()) {
+        $node = (new \app\admin\model\Node($getData));
+        $success=$node->allowField(true)->save();
+        if (!$success) {
+            return ["status" => "error", "title" => "添加节点", "msg" => "添加失败"];
+        }
+        $user=User::get($getData["user_id"]);
+        $user->node_id=$success;
+        if(!$user->save()){
             return ["status" => "error", "title" => "添加节点", "msg" => "添加失败"];
         }
         return ["status" => "success", "title" => "添加节点", "msg" => "添加成功"];
