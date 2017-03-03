@@ -51,7 +51,7 @@ class Index extends AdminBase
         if(!$validate->check($pwd_arr)){
                 return ["status"=>"error","title"=>"验证错误","msg"=>$validate->getError()];
         }
-        return (new User())->chpwd($pwd_arr["oldpwd"],$pwd_arr["newpwd"],$pwd_arr["newpwd2"]);
+        return (new User())->chAdminpwd($pwd_arr["oldpwd"],$pwd_arr["newpwd"],$pwd_arr["newpwd2"]);
     }
     /**
      * 退出登陆

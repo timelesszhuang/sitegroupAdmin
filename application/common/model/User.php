@@ -21,23 +21,41 @@ class User extends Model
     protected $deleteTime = 'delete_time';
 
     /**
-     * 修改后台密码  大后台和结点后台
+     * 修改后台密码  大后台
+     */
+    public function chAdminpwd($oldpwd, $newpwd, $newpwd2)
+    {
+        $user="admin_user";
+        return $this->chPwdSession($oldpwd, $newpwd, $newpwd2,$user);
+    }
+    /**
+     * 修改后台密码  结点后台
+     */
+    public function chIndexpwd($oldpwd, $newpwd, $newpwd2)
+    {
+        $user="index_user";
+        return $this->chPwdSession($oldpwd, $newpwd, $newpwd2,$user);
+    }
+
+    /**
+     * 修改密码时的统一session调用 并修改
      * @param $oldpwd
      * @param $newpwd
      * @param $newpwd2
+     * @param $user
      * @return array
      */
-    public function chpwd($oldpwd, $newpwd, $newpwd2)
+    public function chPwdSession($oldpwd, $newpwd, $newpwd2,$user)
     {
         if ($newpwd != $newpwd2) {
             return ["status" => "error", "msg" => "两次输入的新密码不一样"];
         }
-        $admin_user=Session::get("admin_user");
-        $user = User::where(["user_name" => $admin_user, "pwd" => md5($oldpwd .$admin_user)])->find();
+        $index_user=Session::get($user);
+        $user = User::where(["user_name" => $index_user, "pwd" => md5($oldpwd .$index_user)])->find();
         if (is_null($user)) {
             return ["status" => "error", "msg" => "原密码错误", "title" => "修改密码信息"];
         }
-        $user->pwd = md5($newpwd .$admin_user);
+        $user->pwd = md5($newpwd .$index_user);
         $user->salt = chr(rand(97, 122)) . chr(rand(65, 90)) . chr(rand(97, 122)) . chr(rand(65, 90));
         if (!$user->save()) {
             return ["status" => "error", "msg" => "密码错误失败", "title" => "修改密码信息"];

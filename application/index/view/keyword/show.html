@@ -1,0 +1,42 @@
+{include file="public/top" /}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    {include file="public/header" /}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                关键词展现
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">关键词展现</li>
+            </ol>
+        </section>
+        {include file="public/navbar" /}
+        <section class="content">
+            <table id="example" class="display" cellspacing="0" width="100%"></table>
+        </section>
+    </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Sitegroup</b> 2.3.8
+        </div>
+        <strong>Copyright &copy; 2014-2016 <a href="javascript:void(0);">Sitegroup</a>.</strong> All rights
+        reserved.
+    </footer>
+</div>
+<script>
+    var baseinfo=(function(){
+        var chpwdUrl="{:URL('index/index/chpwdHtml')}";
+        var chpwdsubmit="{:URL('index/index/chpwd')}";
+
+        var datatable_url="{:URL('index/Keyword/getTreeJson')}";
+        return {
+            chpwdUrl:chpwdUrl,
+        };
+    })();
+</script>
+{include file="public/bottom" /}
+<script src="/static/js/indexlogic/show.js"></script>
+</body>
+</html>
