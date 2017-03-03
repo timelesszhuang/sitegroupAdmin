@@ -14,7 +14,31 @@
         </section>
         {include file="public/navbar" /}
         <section class="content">
-            <table id="example" class="display" cellspacing="0" width="100%"></table>
+            <table id="example" title="Client Side Pagination" style="width:700px;height:250px"
+                   data-options="
+				iconCls: 'icon-ok',
+				rownumbers: true,
+				animate: true,
+				collapsible: true,
+				fitColumns: true,
+				url: '{:URL('index/Keyword/gettree')}',
+				method: 'get',
+				idField: 'id',
+				treeField: 'name',
+				pagination: true,
+				pageSize: 2,
+				pageList: [2,5,10]
+			">
+                <thead>
+                <tr>
+                    <th data-options="field:'name',width:180">Task Name</th>
+                    <th data-options="field:'persons',width:60,align:'right'">Persons</th>
+                    <th data-options="field:'begin',width:80">Begin Date</th>
+                    <th data-options="field:'end',width:80">End Date</th>
+                    <th data-options="field:'progress',width:120,formatter:formatProgress">Progress</th>
+                </tr>
+                </thead>
+            </table>
         </section>
     </div>
     <footer class="main-footer">
@@ -30,13 +54,28 @@
         var chpwdUrl="{:URL('index/index/chpwdHtml')}";
         var chpwdsubmit="{:URL('index/index/chpwd')}";
 
-        var datatable_url="{:URL('index/Keyword/getTreeJson')}";
+        var datatable_url="{:URL('index/Keyword/gettree')}";
         return {
             chpwdUrl:chpwdUrl,
         };
     })();
+    function formatProgress(value){
+        if (value){
+            var s = '<div style="width:100%;border:1px solid #ccc">' +
+                    '<div style="width:' + value + '%;background:#cc0000;color:#fff">' + value + '%' + '</div>'
+            '</div>';
+            return s;
+        } else {
+            return '';
+        }
+    }
+    $(function(){
+        $('#example').treegrid().treegrid('clientPaging');
+
+    });
+
 </script>
 {include file="public/bottom" /}
-<script src="/static/js/indexlogic/show.js"></script>
+<!--<script src="/static/js/indexlogic/show.js"></script>-->
 </body>
 </html>
