@@ -17,6 +17,10 @@ class SiteUtil
             if ($d['parent_id'] == $parent_id) {
                 $d['level'] = $level;
                 $d['_parentId']=$d['parent_id'];
+                if($d["tag"]!="C"){
+                    $d['state']="closed";
+                }
+                $d["create_time"]=date("Y-m-d",$d["create_time"]);
                 $arr[] = $d;
                 $this->get_tree($data, $d['id'], $level + 1);
             }

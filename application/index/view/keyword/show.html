@@ -1,3 +1,8 @@
+<style>
+    .content .panel{
+        margin:0 auto;
+    }
+</style>
 {include file="public/top" /}
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -13,8 +18,8 @@
             </ol>
         </section>
         {include file="public/navbar" /}
-        <section class="content">
-            <table id="example" title="Client Side Pagination" style="width:700px;height:250px"
+        <section class="content" style="align:right;">
+            <table id="example" title="关键词展现" style="width:80%;align:center;"
                    data-options="
 				iconCls: 'icon-ok',
 				rownumbers: true,
@@ -26,16 +31,14 @@
 				idField: 'id',
 				treeField: 'name',
 				pagination: true,
-				pageSize: 2,
-				pageList: [2,5,10]
+				pageSize: 5,
+				pageList: [5]
 			">
                 <thead>
                 <tr>
-                    <th data-options="field:'name',width:180">Task Name</th>
-                    <th data-options="field:'persons',width:60,align:'right'">Persons</th>
-                    <th data-options="field:'begin',width:80">Begin Date</th>
-                    <th data-options="field:'end',width:80">End Date</th>
-                    <th data-options="field:'progress',width:120,formatter:formatProgress">Progress</th>
+                    <th data-options="field:'name',width:'30%'">关键字</th>
+                    <th data-options="field:'tag',align:'right',width:'20%'">类型</th>
+                    <th data-options="field:'create_time',align:'right',width:'48%'">创建时间</th>
                 </tr>
                 </thead>
             </table>
@@ -59,23 +62,13 @@
             chpwdUrl:chpwdUrl,
         };
     })();
-    function formatProgress(value){
-        if (value){
-            var s = '<div style="width:100%;border:1px solid #ccc">' +
-                    '<div style="width:' + value + '%;background:#cc0000;color:#fff">' + value + '%' + '</div>'
-            '</div>';
-            return s;
-        } else {
-            return '';
-        }
-    }
+
     $(function(){
-        $('#example').treegrid().treegrid('clientPaging');
+        $('#example').treegrid().treegrid();
 
     });
 
 </script>
 {include file="public/bottom" /}
-<!--<script src="/static/js/indexlogic/show.js"></script>-->
 </body>
 </html>
