@@ -25,6 +25,9 @@
                 <div class="form-group">
                     <button class="btn btn-info" id="add">添加</button>
                 </div>
+                <div class="form-group">
+                    <a id="demoa" href="{:URL('index/Keyword/keywordUploadDemo')}" target="_blank" style=""><button class="btn btn-warning" id="demo">下载demo</button></a>
+                </div>
             </div>
             <table id="example" class="display" cellspacing="0" width="100%">
                 <thead>
@@ -61,6 +64,7 @@
         var keywordhtml="{:URL('index/Keyword/keywordUploadHtml')}";
         var keywordurl='{:URL("index/Keyword/uploadFile")}';
         var importurl='{:URL("index/Keyword/keywordimport")}';
+
         return {
             chpwdUrl:chpwdUrl,
             chpwdsubmit:chpwdsubmit,
@@ -72,11 +76,9 @@
             delurl:delurl,
             keywordhtml:keywordhtml,
             keywordurl:keywordurl,
-            importurl:importurl
+            importurl:importurl,
         };
     })();
-
-
 </script>
 {include file="public/bottom" /}
 <script src="/static/js/Ajaxfileupload/ajaxfileupload.js"></script>
