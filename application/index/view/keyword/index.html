@@ -58,7 +58,9 @@
         var edithtml="{:URL('index/Keyword/editHtml')}";
         var editurl="{:URL('index/Keyword/edit')}";
         var delurl="{:URL('index/Keyword/del')}";
-        var keywordhtml="{:URL('index/Keyword/keywordUploadHtml')}"
+        var keywordhtml="{:URL('index/Keyword/keywordUploadHtml')}";
+        var keywordurl='{:URL("index/Keyword/uploadFile")}';
+        var importurl='{:URL("index/Keyword/keywordimport")}';
         return {
             chpwdUrl:chpwdUrl,
             chpwdsubmit:chpwdsubmit,
@@ -68,11 +70,16 @@
             edithtml:edithtml,
             editurl:editurl,
             delurl:delurl,
-            keywordhtml:keywordhtml
+            keywordhtml:keywordhtml,
+            keywordurl:keywordurl,
+            importurl:importurl
         };
     })();
+
+
 </script>
 {include file="public/bottom" /}
+<script src="/static/js/Ajaxfileupload/ajaxfileupload.js"></script>
 <script src="/static/js/indexlogic/keyword.js"></script>
 </body>
 </html>

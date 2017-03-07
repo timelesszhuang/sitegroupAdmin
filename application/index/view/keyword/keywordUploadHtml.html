@@ -7,13 +7,25 @@
     </h4>
 </div>
 <div class="modal-body">
-    <form  method="post" enctype="multipart/form-data">
-        <input type="file">
+    <form style="padding:30px 0;">
+        <input type="hidden" name="fileputh">
+        <input type="hidden" name="id" value="{$id}">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-4">
+                    <input type="file" name="keyword_up" id="keyword_up">
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-sm" _event="upload">上传</button>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default btn-sm" close="true">关闭</button>
-    <button type="button" class="btn btn-primary btn-sm" _event="add">保存</button>
+    <button type="button" class="btn btn-primary btn-sm" _event="import">导入</button>
 </div>
 <script>
     $("#keyword_type").combotree({
@@ -26,7 +38,6 @@
                 width:200
             });
         }
-
     });
     $("#keyword_parent").combotree({
         url:"{:URL('index/Keyword/changeType')}?tag=A",
